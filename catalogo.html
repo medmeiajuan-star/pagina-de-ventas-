@@ -1,0 +1,3055 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Guitar Shop - Catálogo</title>
+
+<style>
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: #f0f2f5;
+    color: #333;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+
+.header {
+    background: #111;
+    color: white;
+    padding: 15px 40px;
+    box-shadow: 0 4px 10px rgba(0,0,0,.3);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-bar {
+    max-width: 1300px;
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    color: white;
+    text-decoration: none;
+}
+
+.logo-icon {
+    width: 32px;
+    height: 32px;
+    fill: #ff9f1a;
+}
+
+.brand-name {
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.brand-name span {
+    color: #ff9f1a;
+}
+
+
+/* =========================
+   MENÚ
+========================= */
+
+.menu-links {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+.menu-links a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: .95rem;
+    font-weight: 500;
+    transition: .3s;
+}
+
+.menu-links a:hover,
+.menu-links a.active {
+    color: #ff9f1a;
+}
+
+
+/* =========================
+   BOTÓN CARRITO
+========================= */
+
+.cart-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    background: #222;
+    border: 1px solid #444;
+
+    color: white;
+
+    padding: 9px 16px;
+    border-radius: 20px;
+
+    cursor: pointer;
+    transition: .3s;
+
+    position: relative;
+}
+
+.cart-button:hover {
+    background: #ff9f1a;
+    border-color: #ff9f1a;
+    color: #111;
+}
+
+.cart-button svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+}
+
+
+/* =========================
+   CONTADOR
+========================= */
+
+.cart-count {
+    position: absolute;
+
+    top: -8px;
+    right: -8px;
+
+    width: 21px;
+    height: 21px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #ff3b30;
+    color: white;
+
+    border-radius: 50%;
+
+    font-size: .7rem;
+    font-weight: bold;
+}
+
+
+/* =========================
+   TÍTULO
+========================= */
+
+.banner-info {
+    text-align: center;
+    padding: 35px 10px 10px;
+}
+
+.banner-info h2 {
+    font-size: 1.8rem;
+    color: #111;
+}
+
+.banner-info p {
+    font-size: .9rem;
+    color: #666;
+    margin-top: 5px;
+}
+
+
+/* =========================
+   CATÁLOGO
+========================= */
+
+.catalog-container {
+    max-width: 1300px;
+    margin: 30px auto;
+
+    padding: 0 20px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fill, minmax(220px, 1fr));
+
+    gap: 25px;
+}
+
+
+/* =========================
+   TARJETAS
+========================= */
+
+.card {
+    background: white;
+
+    border-radius: 12px;
+    overflow: hidden;
+
+    box-shadow:
+        0 4px 12px rgba(0,0,0,.08);
+
+    transition: .3s;
+
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 10px 20px rgba(0,0,0,.15);
+}
+
+.img-box {
+    width: 100%;
+    height: 180px;
+
+    background: #fdfdfd;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    border-bottom: 1px solid #eee;
+}
+
+.img-box img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    padding: 15px;
+
+    transition: .3s;
+}
+
+.card:hover .img-box img {
+    transform: scale(1.06);
+}
+
+.card-info {
+    padding: 15px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.guitar-title {
+    font-size: 1rem;
+    color: #111;
+    font-weight: 700;
+}
+
+.guitar-type {
+    font-size: .8rem;
+    color: #666;
+}
+
+.guitar-price {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #111;
+    margin-top: 5px;
+}
+
+.view-button {
+    display: block;
+
+    background: #111;
+    color: white;
+
+    text-align: center;
+
+    padding: 9px;
+
+    margin-top: 8px;
+
+    border-radius: 6px;
+
+    font-size: .85rem;
+    font-weight: 600;
+
+    transition: .3s;
+}
+
+.card:hover .view-button {
+    background: #ff9f1a;
+    color: #111;
+}
+
+
+/* =========================
+   MODALES
+========================= */
+
+.modal {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0,0,0,.75);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: .3s;
+
+    z-index: 500;
+}
+
+
+/* Abrir modal */
+
+#producto1:checked ~ .modal-1,
+#producto2:checked ~ .modal-2,
+#producto3:checked ~ .modal-3,
+#producto4:checked ~ .modal-4,
+#producto5:checked ~ .modal-5,
+#producto6:checked ~ .modal-6,
+#producto7:checked ~ .modal-7,
+#producto8:checked ~ .modal-8,
+#producto9:checked ~ .modal-9,
+#producto10:checked ~ .modal-10,
+#producto11:checked ~ .modal-11,
+#producto12:checked ~ .modal-12,
+#producto13:checked ~ .modal-13,
+#producto14:checked ~ .modal-14,
+#producto15:checked ~ .modal-15,
+#producto16:checked ~ .modal-16,
+#producto17:checked ~ .modal-17,
+#producto18:checked ~ .modal-18,
+#producto19:checked ~ .modal-19,
+#producto20:checked ~ .modal-20 {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-box {
+    width: 100%;
+    max-width: 850px;
+
+    background: white;
+
+    border-radius: 15px;
+
+    overflow: hidden;
+
+    position: relative;
+}
+
+.modal-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.modal-image {
+    min-height: 400px;
+
+    background: #f8f8f8;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+}
+
+.modal-image img {
+    width: 100%;
+    max-height: 360px;
+
+    object-fit: contain;
+}
+
+.modal-info {
+    padding: 45px 35px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+.modal-info h2 {
+    color: #111;
+    font-size: 1.7rem;
+    margin-bottom: 10px;
+}
+
+.modal-type {
+    color: #777;
+    margin-bottom: 20px;
+}
+
+.modal-description {
+    color: #555;
+
+    line-height: 1.6;
+
+    margin-bottom: 20px;
+}
+
+.modal-price {
+    color: #111;
+
+    font-size: 1.7rem;
+    font-weight: 800;
+
+    margin-bottom: 20px;
+}
+
+.modal-close {
+    position: absolute;
+
+    top: 12px;
+    right: 12px;
+
+    width: 35px;
+    height: 35px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #111;
+    color: white;
+
+    border-radius: 50%;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    z-index: 10;
+}
+
+.modal-close:hover {
+    background: #ff9f1a;
+    color: #111;
+}
+
+
+/* =========================
+   BOTÓN AGREGAR
+========================= */
+
+.add-cart {
+    display: block;
+
+    background: #ff9f1a;
+
+    color: #111;
+
+    padding: 13px;
+
+    border-radius: 7px;
+
+    text-align: center;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.add-cart:hover {
+    background: #111;
+    color: white;
+}
+
+
+/* =========================
+   CARRITO
+========================= */
+
+.cart-panel {
+    position: fixed;
+
+    top: 0;
+    right: -430px;
+
+    width: 410px;
+    max-width: 90%;
+
+    height: 100vh;
+
+    background: white;
+
+    z-index: 1000;
+
+    box-shadow:
+        -5px 0 20px rgba(0,0,0,.25);
+
+    padding: 25px;
+
+    transition: .4s;
+
+    overflow-y: auto;
+}
+
+#carrito:checked ~ .cart-panel {
+    right: 0;
+}
+
+.cart-title {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+}
+
+.cart-title h2 {
+    color: #111;
+}
+
+.close-cart {
+    width: 35px;
+    height: 35px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #111;
+    color: white;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    font-size: 20px;
+}
+
+.close-cart:hover {
+    background: #ff9f1a;
+    color: #111;
+}
+
+
+/* =========================
+   PRODUCTOS DEL CARRITO
+========================= */
+
+.cart-product {
+    display: none;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 15px 0;
+
+    border-bottom: 1px solid #eee;
+}
+
+
+/* Mostrar producto seleccionado */
+
+#carrito1:checked ~ .cart-panel .cart-product-1,
+#carrito2:checked ~ .cart-panel .cart-product-2,
+#carrito3:checked ~ .cart-panel .cart-product-3,
+#carrito4:checked ~ .cart-panel .cart-product-4,
+#carrito5:checked ~ .cart-panel .cart-product-5,
+#carrito6:checked ~ .cart-panel .cart-product-6,
+#carrito7:checked ~ .cart-panel .cart-product-7,
+#carrito8:checked ~ .cart-panel .cart-product-8,
+#carrito9:checked ~ .cart-panel .cart-product-9,
+#carrito10:checked ~ .cart-panel .cart-product-10,
+#carrito11:checked ~ .cart-panel .cart-product-11,
+#carrito12:checked ~ .cart-panel .cart-product-12,
+#carrito13:checked ~ .cart-panel .cart-product-13,
+#carrito14:checked ~ .cart-panel .cart-product-14,
+#carrito15:checked ~ .cart-panel .cart-product-15,
+#carrito16:checked ~ .cart-panel .cart-product-16,
+#carrito17:checked ~ .cart-panel .cart-product-17,
+#carrito18:checked ~ .cart-panel .cart-product-18,
+#carrito19:checked ~ .cart-panel .cart-product-19,
+#carrito20:checked ~ .cart-panel .cart-product-20 {
+    display: flex;
+}
+
+.cart-product img {
+    width: 75px;
+    height: 75px;
+
+    object-fit: contain;
+
+    background: #f5f5f5;
+
+    border-radius: 8px;
+}
+
+.cart-product-info {
+    flex: 1;
+}
+
+.cart-product-info h3 {
+    font-size: .9rem;
+    color: #111;
+}
+
+.cart-product-info p {
+    margin-top: 5px;
+    font-weight: 700;
+}
+
+
+/* =========================
+   BOTÓN QUITAR
+========================= */
+
+.remove-product {
+    background: #ff3b30;
+    color: white;
+
+    border-radius: 5px;
+
+    padding: 5px 8px;
+
+    cursor: pointer;
+
+    font-size: .75rem;
+}
+
+.remove-product:hover {
+    background: #c9231b;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    background: #111;
+
+    color: #888;
+
+    padding: 30px 20px;
+
+    text-align: center;
+
+    margin-top: 50px;
+
+    font-size: .85rem;
+}
+
+.footer-links {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 20px;
+
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    color: #aaa;
+
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:750px) {
+
+    .header {
+        padding: 15px 20px;
+    }
+
+    .nav-bar {
+        justify-content: center;
+    }
+
+    .menu-links {
+        order: 3;
+
+        width: 100%;
+
+        justify-content: center;
+
+        flex-wrap: wrap;
+
+        gap: 15px;
+    }
+
+    .modal-content {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-image {
+        min-height: 250px;
+    }
+
+    .modal-info {
+        padding: 25px;
+    }
+}
+
+@media(max-width:500px) {
+
+    .menu-links {
+        display: none;
+    }
+
+    .catalog-container {
+        grid-template-columns: 1fr 1fr;
+
+        gap: 12px;
+
+        padding: 0 12px;
+    }
+
+    .img-box {
+        height: 150px;
+    }
+
+    .card-info {
+        padding: 10px;
+    }
+
+    .guitar-title {
+        font-size: .9rem;
+    }
+
+    .cart-panel {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .modal {
+        padding: 10px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- =====================================================
+     CONTROLES DE PRODUCTOS
+===================================================== -->
+
+<input type="checkbox" id="producto1">
+<input type="checkbox" id="producto2">
+<input type="checkbox" id="producto3">
+<input type="checkbox" id="producto4">
+<input type="checkbox" id="producto5">
+<input type="checkbox" id="producto6">
+<input type="checkbox" id="producto7">
+<input type="checkbox" id="producto8">
+<input type="checkbox" id="producto9">
+<input type="checkbox" id="producto10">
+<input type="checkbox" id="producto11">
+<input type="checkbox" id="producto12">
+<input type="checkbox" id="producto13">
+<input type="checkbox" id="producto14">
+<input type="checkbox" id="producto15">
+<input type="checkbox" id="producto16">
+<input type="checkbox" id="producto17">
+<input type="checkbox" id="producto18">
+<input type="checkbox" id="producto19">
+<input type="checkbox" id="producto20">
+
+
+<!-- =====================================================
+     CONTROLES DEL CARRITO
+===================================================== -->
+
+<input type="checkbox" id="carrito">
+
+<input type="checkbox" id="carrito1">
+<input type="checkbox" id="carrito2">
+<input type="checkbox" id="carrito3">
+<input type="checkbox" id="carrito4">
+<input type="checkbox" id="carrito5">
+<input type="checkbox" id="carrito6">
+<input type="checkbox" id="carrito7">
+<input type="checkbox" id="carrito8">
+<input type="checkbox" id="carrito9">
+<input type="checkbox" id="carrito10">
+<input type="checkbox" id="carrito11">
+<input type="checkbox" id="carrito12">
+<input type="checkbox" id="carrito13">
+<input type="checkbox" id="carrito14">
+<input type="checkbox" id="carrito15">
+<input type="checkbox" id="carrito16">
+<input type="checkbox" id="carrito17">
+<input type="checkbox" id="carrito18">
+<input type="checkbox" id="carrito19">
+<input type="checkbox" id="carrito20">
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+<div class="nav-bar">
+
+<a href="index1.html" class="logo-container">
+
+<svg class="logo-icon" viewBox="0 0 24 24">
+
+<path d="M12 2L4 7v6c0 5.55 3.84 10.74 8 12 4.16-1.26 8-6.45 8-12V7l-8-5zm0 4a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/>
+
+</svg>
+
+<span class="brand-name">
+Guitar <span>Shop</span>
+</span>
+
+</a>
+
+
+       <ul class="menu-links">
+
+            <li>
+                <a
+                    href="C:\Users\RAUL MEDRANO\OneDrive\Desktop\pagina de guitarras\index.html"
+                    class="active"
+                >
+                    Inicio
+                </a>
+            </li>
+
+            <li>
+                <a href="C:\Users\RAUL MEDRANO\OneDrive\Desktop\pagina de guitarras\catalogo.html">
+                    Catálogo
+                </a>
+            </li>
+
+            <li>
+                <a href="C:\Users\RAUL MEDRANO\OneDrive\Desktop\pagina de guitarras\marcas.html">
+                    Marcas
+                </a>
+            </li>
+
+            <li>
+                <a href="C:\Users\RAUL MEDRANO\OneDrive\Desktop\pagina de guitarras\ofertas.html">
+                    Ofertas
+                </a>
+            </li>
+
+            <li>
+                <a href="C:\Users\RAUL MEDRANO\OneDrive\Desktop\pagina de guitarras\contactos.html">
+                    Contacto
+                </a>
+            </li>
+
+        </ul>
+
+
+<label for="carrito" class="cart-button">
+
+<svg viewBox="0 0 24 24">
+
+<path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1z"/>
+
+</svg>
+
+<span>Carrito</span>
+
+<span class="cart-count">+</span>
+
+</label>
+
+</div>
+
+</header>
+
+
+<!-- =====================================================
+     TÍTULO
+===================================================== -->
+
+<div class="banner-info">
+
+<h2>
+Catálogo de Guitarras Eléctricas
+</h2>
+
+<p>
+Explora nuestras mejores opciones con envíos a todo el país
+</p>
+
+</div>
+
+
+<!-- =====================================================
+     CATÁLOGO
+===================================================== -->
+
+<main class="catalog-container">
+
+
+<!-- PRODUCTO 1 -->
+
+<label for="producto1" class="card">
+
+<div class="img-box">
+<img src="1.png" alt="Squier Sonic Stratocaster">
+</div>
+
+<div class="card-info">
+
+<h3 class="guitar-title">
+Squier Sonic Stratocaster
+</h3>
+
+<p class="guitar-type">
+Stratocaster Style - Sunburst
+</p>
+
+<span class="guitar-price">
+S/ 673
+</span>
+
+<span class="view-button">
+Ver producto
+</span>
+
+</div>
+
+</label>
+
+
+<!-- PRODUCTO 2 -->
+
+<label for="producto2" class="card">
+
+<div class="img-box">
+<img src="2.png" alt="Epiphone Les Paul Special VE">
+</div>
+
+<div class="card-info">
+
+<h3 class="guitar-title">
+Epiphone Les Paul Special VE
+</h3>
+
+<p class="guitar-type">
+Les Paul Style - Crest
+</p>
+
+<span class="guitar-price">
+S/ 673
+</span>
+
+<span class="view-button">
+Ver producto
+</span>
+
+</div>
+
+</label>
+
+
+<!-- PRODUCTO 3 -->
+
+<label for="producto3" class="card">
+
+<div class="img-box">
+<img src="3.png" alt="Yamaha Pacifica 112V">
+</div>
+
+<div class="card-info">
+
+<h3 class="guitar-title">
+Yamaha Pacifica 112V
+</h3>
+
+<p class="guitar-type">
+Pacifica Style
+</p>
+
+<span class="guitar-price">
+S/ 1,112
+</span>
+
+<span class="view-button">
+Ver producto
+</span>
+
+</div>
+
+</label>
+
+
+<!-- PRODUCTO 4 -->
+
+<label for="producto4" class="card">
+
+<div class="img-box">
+<img src="4.png" alt="Jackson JS22 Dinky">
+</div>
+
+<div class="card-info">
+
+<h3 class="guitar-title">
+Jackson JS22 Dinky
+</h3>
+
+<p class="guitar-type">
+Dinky - Red Special
+</p>
+
+<span class="guitar-price">
+S/ 673
+</span>
+
+<span class="view-button">
+Ver producto
+</span>
+
+</div>
+
+</label>
+
+
+<!-- PRODUCTO 5 -->
+
+<label for="producto5" class="card">
+
+<div class="img-box">
+<img src="5.png" alt="Ibanez GIO GRX70QA">
+</div>
+
+<div class="card-info">
+
+<h3 class="guitar-title">
+Ibanez GIO GRX70QA
+</h3>
+
+<p class="guitar-type">
+Stratocaster - Black
+</p>
+
+<span class="guitar-price">
+S/ 842
+</span>
+
+<span class="view-button">
+Ver producto
+</span>
+
+</div>
+
+</label>
+
+
+<!-- PRODUCTO 6 -->
+
+<label for="producto6" class="card">
+
+<div class="img-box">
+<img src="6.png" alt="Kramer Baretta Special">
+</div>
+
+<div class="card-info">
+
+<h3 class="guitar-title">
+Kramer Baretta Special
+</h3>
+
+<p class="guitar-type">
+Stratocaster Style - Blanco
+</p>
+
+<span class="guitar-price">
+S/ 774
+</span>
+
+<span class="view-button">
+Ver producto
+</span>
+
+</div>
+
+</label>
+
+
+<!-- PRODUCTO 7 -->
+
+<label for="producto7" class="card">
+
+<div class="img-box">
+<img src="7.png" alt="Squier Classic Vibe 60s Jazzmaster">
+</div>
+
+<div class="card-info">
+
+<h3 class="guitar-title">
+Squier Classic Vibe '60s Jazzmaster
+</h3>
+
+<p class="guitar-type">
+Jazzmaster - Vintage
+</p>
+
+<span class="guitar-price">
+S/ 1,450
+</span>
+
+<span class="view-button">
+Ver producto
+</span>
+
+</div>
+
+</label>
+
+
+<!-- PRODUCTO 8 -->
+
+<label for="producto8" class="card">
+
+<div class="img-box">
+<img src="8.png" alt="Gretsch G2622 Streamliner">
+</div>
+
+<div class="card-info">
+
+<h3 class="guitar-title">
+Gretsch G2622 Streamliner
+</h3>
+
+<p class="guitar-type">
+Semi-Hollow - Streamliner
+</p>
+
+<span class="guitar-price">
+S/ 1,856
+</span>
+
+<span class="view-button">
+Ver producto
+</span>
+
+</div>
+
+</label>
+
+
+<!-- PRODUCTO 9 -->
+
+<label for="producto9" class="card">
+
+<div class="img-box">
+<img src="9.png" alt="Epiphone Les Paul Standard 60s">
+</div>
+
+<div class="card-info">
+
+<h3 class="guitar-title">
+Epiphone Les Paul Standard '60s
+</h3>
+
+<p class="guitar-type">
+Les Paul - Sunburst
+</p>
+
+<span class="guitar-price">
+S/ 2,363
+</span>
+
+<span class="view-button">
+Ver producto
+</span>
+
+</div>
+
+</label>
+
+
+<!-- PRODUCTO 10 -->
+
+<label for="producto10" class="card">
+
+<div class="img-box">
+<img src="10.png" alt="Fender Player Stratocaster">
+</div>
+
+<div class="card-info">
+
+<h3 class="guitar-title">
+Fender Player Stratocaster
+</h3>
+
+<p class="guitar-type">
+Stratocaster - Player Series
+</p>
+
+<span class="guitar-price">
+S/ 2,701
+</span>
+
+<span class="view-button">
+Ver producto
+</span>
+
+</div>
+
+</label>
+
+
+<!-- PRODUCTO 11 -->
+
+<label for="producto11" class="card">
+
+<div class="img-box">
+<img src="11.png" alt="Fender Player Telecaster">
+</div>
+
+<div class="card-info">
+
+<h3 class="guitar-title">
+Fender Player Telecaster
+</h3>
+
+<p class="guitar-type">
+Telecaster - Player Series
+</p>
+
+<span class="guitar-price">
+S/ 2,701
+</span>
+
+<span class="view-button">
+Ver producto
+</span>
+
+</div>
+
+</label>
+
+
+<!-- PRODUCTO 12 -->
+
+<label for="producto12" class="card">
+
+<div class="img-box">
+<img src="12.png" alt="PRS SE Standard 24">
+</div>
+
+<div class="card-info">
+
+<h3 class="guitar-title">
+PRS SE Standard 24
+</h3>
+
+<p class="guitar-type">
+PRS - Standard 24
+</p>
+
+<span class="guitar-price">
+S/ 2,532
+</span>
+
+<span class="view-button">
+Ver producto
+</span>
+
+</div>
+
+</label>
+
+
+<!-- PRODUCTO 13 -->
+
+<label for="producto13" class="card">
+
+<div class="img-box">
+<img src="13.png" alt="ESP LTD EC-256">
+</div>
+
+<div class="card-info">
+
+<h3 class="guitar-title">
+ESP LTD EC-256
+</h3>
+
+<p class="guitar-type">
+Single Cut - EC Series
+</p>
+
+<span class="guitar-price">
+S/ 2,025
+</span>
+
+<span class="view-button">
+Ver producto
+</span>
+
+</div>
+
+</label>
+
+
+<!-- PRODUCTO 14 -->
+
+<label for="producto14" class="card">
+
+<div class="img-box">
+<img src="14.png" alt="Ibanez RG421">
+</div>
+
+<div class="card-info">
+
+<h3 class="guitar-title">
+Ibanez RG421
+</h3>
+
+<p class="guitar-type">
+RG Style - Black
+</p>
+
+<span class="guitar-price">
+S/ 1,180
+</span>
+
+<span class="view-button">
+Ver producto
+</span>
+
+</div>
+
+</label>
+
+
+<!-- PRODUCTO 15 -->
+
+<label for="producto15" class="card">
+
+<div class="img-box">
+<img src="15.png" alt="Fender American Professional II Strat">
+</div>
+
+<div class="card-info">
+
+<h3 class="guitar-title">
+Fender American Professional II Strat
+</h3>
+
+<p class="guitar-type">
+Stratocaster - Sunburst
+</p>
+
+<span class="guitar-price">
+S/ 5,743
+</span>
+
+<span class="view-button">
+Ver producto
+</span>
+
+</div>
+
+</label>
+
+
+<!-- PRODUCTO 16 -->
+
+<label for="producto16" class="card">
+
+<div class="img-box">
+<img src="16.png" alt="Gibson Les Paul Standard 50s">
+</div>
+
+<div class="card-info">
+
+<h3 class="guitar-title">
+Gibson Les Paul Standard '50s
+</h3>
+
+<p class="guitar-type">
+Les Paul - Sunburst
+</p>
+
+<span class="guitar-price">
+S/ 10,137
+</span>
+
+<span class="view-button">
+Ver producto
+</span>
+
+</div>
+
+</label>
+
+
+<!-- PRODUCTO 17 -->
+
+<label for="producto17" class="card">
+
+<div class="img-box">
+<img src="17.png" alt="Ibanez Prestige RG5120M">
+</div>
+
+<div class="card-info">
+
+<h3 class="guitar-title">
+Ibanez Prestige RG5120M
+</h3>
+
+<p class="guitar-type">
+RG Prestige - Premium
+</p>
+
+<span class="guitar-price">
+S/ 6,757
+</span>
+
+<span class="view-button">
+Ver producto
+</span>
+
+</div>
+
+</label>
+
+
+<!-- PRODUCTO 18 -->
+
+<label for="producto18" class="card">
+
+<div class="img-box">
+<img src="18.png" alt="PRS Custom 24">
+</div>
+
+<div class="card-info">
+
+<h3 class="guitar-title">
+PRS Custom 24
+</h3>
+
+<p class="guitar-type">
+PRS Custom - Premium
+</p>
+
+<span class="guitar-price">
+S/ 15,210
+</span>
+
+<span class="view-button">
+Ver producto
+</span>
+
+</div>
+
+</label>
+
+
+<!-- PRODUCTO 19 -->
+
+<label for="producto19" class="card">
+
+<div class="img-box">
+<img src="19.png" alt="Music Man Majesty">
+</div>
+
+<div class="card-info">
+
+<h3 class="guitar-title">
+Music Man Majesty
+</h3>
+
+<p class="guitar-type">
+Modern Guitar
+</p>
+
+<span class="guitar-price">
+S/ 11,830
+</span>
+
+<span class="view-button">
+Ver producto
+</span>
+
+</div>
+
+</label>
+
+
+<!-- PRODUCTO 20 -->
+
+<label for="producto20" class="card">
+
+<div class="img-box">
+<img src="20.png" alt="EVH Wolfgang Special">
+</div>
+
+<div class="card-info">
+
+<h3 class="guitar-title">
+EVH Wolfgang Special
+</h3>
+
+<p class="guitar-type">
+Modern Guitar
+</p>
+
+<span class="guitar-price">
+S/ 4,391
+</span>
+
+<span class="view-button">
+Ver producto
+</span>
+
+</div>
+
+</label>
+
+</main>
+
+
+<!-- =====================================================
+     MODAL 1
+===================================================== -->
+
+<div class="modal modal-1">
+
+<div class="modal-box">
+
+<label for="producto1" class="modal-close">×</label>
+
+<div class="modal-content">
+
+<div class="modal-image">
+<img src="1.png" alt="Squier Sonic Stratocaster">
+</div>
+
+<div class="modal-info">
+
+<h2>Squier Sonic Stratocaster</h2>
+
+<p class="modal-type">
+Stratocaster Style - Sunburst
+</p>
+
+<p class="modal-description">
+Guitarra eléctrica versátil y cómoda, ideal para
+estudiantes y músicos que buscan un instrumento
+para comenzar.
+</p>
+
+<div class="modal-price">
+S/ 673
+</div>
+
+<label for="carrito1" class="add-cart">
+🛒 Agregar al carrito
+</label>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     MODAL 2
+===================================================== -->
+
+<div class="modal modal-2">
+
+<div class="modal-box">
+
+<label for="producto2" class="modal-close">×</label>
+
+<div class="modal-content">
+
+<div class="modal-image">
+<img src="2.png" alt="Epiphone Les Paul Special VE">
+</div>
+
+<div class="modal-info">
+
+<h2>Epiphone Les Paul Special VE</h2>
+
+<p class="modal-type">
+Les Paul Style - Crest
+</p>
+
+<p class="modal-description">
+Modelo inspirado en las clásicas Les Paul,
+con un diseño elegante y un sonido potente.
+</p>
+
+<div class="modal-price">
+S/ 673
+</div>
+
+<label for="carrito2" class="add-cart">
+🛒 Agregar al carrito
+</label>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     MODAL 3
+===================================================== -->
+
+<div class="modal modal-3">
+
+<div class="modal-box">
+
+<label for="producto3" class="modal-close">×</label>
+
+<div class="modal-content">
+
+<div class="modal-image">
+<img src="3.png" alt="Yamaha Pacifica 112V">
+</div>
+
+<div class="modal-info">
+
+<h2>Yamaha Pacifica 112V</h2>
+
+<p class="modal-type">
+Pacifica Style
+</p>
+
+<p class="modal-description">
+Guitarra versátil y cómoda, adecuada
+para diferentes estilos musicales.
+</p>
+
+<div class="modal-price">
+S/ 1,112
+</div>
+
+<label for="carrito3" class="add-cart">
+🛒 Agregar al carrito
+</label>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     MODAL 4
+===================================================== -->
+
+<div class="modal modal-4">
+
+<div class="modal-box">
+
+<label for="producto4" class="modal-close">×</label>
+
+<div class="modal-content">
+
+<div class="modal-image">
+<img src="4.png" alt="Jackson JS22 Dinky">
+</div>
+
+<div class="modal-info">
+
+<h2>Jackson JS22 Dinky</h2>
+
+<p class="modal-type">
+Dinky - Red Special
+</p>
+
+<p class="modal-description">
+Guitarra de diseño moderno pensada
+para ofrecer comodidad y potencia.
+</p>
+
+<div class="modal-price">
+S/ 673
+</div>
+
+<label for="carrito4" class="add-cart">
+🛒 Agregar al carrito
+</label>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     MODAL 5
+===================================================== -->
+
+<div class="modal modal-5">
+
+<div class="modal-box">
+
+<label for="producto5" class="modal-close">×</label>
+
+<div class="modal-content">
+
+<div class="modal-image">
+<img src="5.png" alt="Ibanez GIO GRX70QA">
+</div>
+
+<div class="modal-info">
+
+<h2>Ibanez GIO GRX70QA</h2>
+
+<p class="modal-type">
+Stratocaster - Black
+</p>
+
+<p class="modal-description">
+Modelo moderno y versátil de Ibanez,
+pensado para guitarristas que buscan
+comodidad y variedad sonora.
+</p>
+
+<div class="modal-price">
+S/ 842
+</div>
+
+<label for="carrito5" class="add-cart">
+🛒 Agregar al carrito
+</label>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     MODAL 6
+===================================================== -->
+
+<div class="modal modal-6">
+
+<div class="modal-box">
+
+<label for="producto6" class="modal-close">×</label>
+
+<div class="modal-content">
+
+<div class="modal-image">
+<img src="6.png" alt="Kramer Baretta Special">
+</div>
+
+<div class="modal-info">
+
+<h2>Kramer Baretta Special</h2>
+
+<p class="modal-type">
+Stratocaster Style - Blanco
+</p>
+
+<p class="modal-description">
+Guitarra de estilo clásico con un
+diseño llamativo y cómodo.
+</p>
+
+<div class="modal-price">
+S/ 774
+</div>
+
+<label for="carrito6" class="add-cart">
+🛒 Agregar al carrito
+</label>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     MODAL 7
+===================================================== -->
+
+<div class="modal modal-7">
+
+<div class="modal-box">
+
+<label for="producto7" class="modal-close">×</label>
+
+<div class="modal-content">
+
+<div class="modal-image">
+<img src="7.png" alt="Squier Classic Vibe 60s Jazzmaster">
+</div>
+
+<div class="modal-info">
+
+<h2>Squier Classic Vibe '60s Jazzmaster</h2>
+
+<p class="modal-type">
+Jazzmaster - Vintage
+</p>
+
+<p class="modal-description">
+Inspirada en las guitarras clásicas de
+los años 60, con una estética vintage.
+</p>
+
+<div class="modal-price">
+S/ 1,450
+</div>
+
+<label for="carrito7" class="add-cart">
+🛒 Agregar al carrito
+</label>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     MODAL 8
+===================================================== -->
+
+<div class="modal modal-8">
+
+<div class="modal-box">
+
+<label for="producto8" class="modal-close">×</label>
+
+<div class="modal-content">
+
+<div class="modal-image">
+<img src="8.png" alt="Gretsch G2622 Streamliner">
+</div>
+
+<div class="modal-info">
+
+<h2>Gretsch G2622 Streamliner</h2>
+
+<p class="modal-type">
+Semi-Hollow - Streamliner
+</p>
+
+<p class="modal-description">
+Guitarra semi-hollow con una estética
+elegante y un carácter sonoro distintivo.
+</p>
+
+<div class="modal-price">
+S/ 1,856
+</div>
+
+<label for="carrito8" class="add-cart">
+🛒 Agregar al carrito
+</label>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     MODAL 9
+===================================================== -->
+
+<div class="modal modal-9">
+
+<div class="modal-box">
+
+<label for="producto9" class="modal-close">×</label>
+
+<div class="modal-content">
+
+<div class="modal-image">
+<img src="9.png" alt="Epiphone Les Paul Standard 60s">
+</div>
+
+<div class="modal-info">
+
+<h2>Epiphone Les Paul Standard '60s</h2>
+
+<p class="modal-type">
+Les Paul - Sunburst
+</p>
+
+<p class="modal-description">
+Modelo inspirado en las clásicas Les Paul
+de los años 60.
+</p>
+
+<div class="modal-price">
+S/ 2,363
+</div>
+
+<label for="carrito9" class="add-cart">
+🛒 Agregar al carrito
+</label>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     MODAL 10
+===================================================== -->
+
+<div class="modal modal-10">
+
+<div class="modal-box">
+
+<label for="producto10" class="modal-close">×</label>
+
+<div class="modal-content">
+
+<div class="modal-image">
+<img src="10.png" alt="Fender Player Stratocaster">
+</div>
+
+<div class="modal-info">
+
+<h2>Fender Player Stratocaster</h2>
+
+<p class="modal-type">
+Stratocaster - Player Series
+</p>
+
+<p class="modal-description">
+Stratocaster versátil para diferentes
+estilos musicales.
+</p>
+
+<div class="modal-price">
+S/ 2,701
+</div>
+
+<label for="carrito10" class="add-cart">
+🛒 Agregar al carrito
+</label>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     MODAL 11
+===================================================== -->
+
+<div class="modal modal-11">
+
+<div class="modal-box">
+
+<label for="producto11" class="modal-close">×</label>
+
+<div class="modal-content">
+
+<div class="modal-image">
+<img src="11.png" alt="Fender Player Telecaster">
+</div>
+
+<div class="modal-info">
+
+<h2>Fender Player Telecaster</h2>
+
+<p class="modal-type">
+Telecaster - Player Series
+</p>
+
+<p class="modal-description">
+Telecaster clásica con un diseño
+reconocido y sonido definido.
+</p>
+
+<div class="modal-price">
+S/ 2,701
+</div>
+
+<label for="carrito11" class="add-cart">
+🛒 Agregar al carrito
+</label>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     MODAL 12
+===================================================== -->
+
+<div class="modal modal-12">
+
+<div class="modal-box">
+
+<label for="producto12" class="modal-close">×</label>
+
+<div class="modal-content">
+
+<div class="modal-image">
+<img src="12.png" alt="PRS SE Standard 24">
+</div>
+
+<div class="modal-info">
+
+<h2>PRS SE Standard 24</h2>
+
+<p class="modal-type">
+PRS - Standard 24
+</p>
+
+<p class="modal-description">
+Guitarra PRS versátil con una construcción
+moderna y elegante.
+</p>
+
+<div class="modal-price">
+S/ 2,532
+</div>
+
+<label for="carrito12" class="add-cart">
+🛒 Agregar al carrito
+</label>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     MODAL 13
+===================================================== -->
+
+<div class="modal modal-13">
+
+<div class="modal-box">
+
+<label for="producto13" class="modal-close">×</label>
+
+<div class="modal-content">
+
+<div class="modal-image">
+<img src="13.png" alt="ESP LTD EC-256">
+</div>
+
+<div class="modal-info">
+
+<h2>ESP LTD EC-256</h2>
+
+<p class="modal-type">
+Single Cut - EC Series
+</p>
+
+<p class="modal-description">
+Guitarra de estilo single cut con
+diseño elegante y sonido potente.
+</p>
+
+<div class="modal-price">
+S/ 2,025
+</div>
+
+<label for="carrito13" class="add-cart">
+🛒 Agregar al carrito
+</label>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     MODAL 14
+===================================================== -->
+
+<div class="modal modal-14">
+
+<div class="modal-box">
+
+<label for="producto14" class="modal-close">×</label>
+
+<div class="modal-content">
+
+<div class="modal-image">
+<img src="14.png" alt="Ibanez RG421">
+</div>
+
+<div class="modal-info">
+
+<h2>Ibanez RG421</h2>
+
+<p class="modal-type">
+RG Style - Black
+</p>
+
+<p class="modal-description">
+Modelo de la serie RG pensado para
+estilos modernos y guitarristas que
+buscan comodidad.
+</p>
+
+<div class="modal-price">
+S/ 1,180
+</div>
+
+<label for="carrito14" class="add-cart">
+🛒 Agregar al carrito
+</label>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     MODAL 15
+===================================================== -->
+
+<div class="modal modal-15">
+
+<div class="modal-box">
+
+<label for="producto15" class="modal-close">×</label>
+
+<div class="modal-content">
+
+<div class="modal-image">
+<img src="15.png" alt="Fender American Professional II Strat">
+</div>
+
+<div class="modal-info">
+
+<h2>Fender American Professional II Strat</h2>
+
+<p class="modal-type">
+Stratocaster - Sunburst
+</p>
+
+<p class="modal-description">
+Stratocaster de gama profesional con
+prestaciones orientadas a músicos exigentes.
+</p>
+
+<div class="modal-price">
+S/ 5,743
+</div>
+
+<label for="carrito15" class="add-cart">
+🛒 Agregar al carrito
+</label>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     MODAL 16
+===================================================== -->
+
+<div class="modal modal-16">
+
+<div class="modal-box">
+
+<label for="producto16" class="modal-close">×</label>
+
+<div class="modal-content">
+
+<div class="modal-image">
+<img src="16.png" alt="Gibson Les Paul Standard 50s">
+</div>
+
+<div class="modal-info">
+
+<h2>Gibson Les Paul Standard '50s</h2>
+
+<p class="modal-type">
+Les Paul - Sunburst
+</p>
+
+<p class="modal-description">
+Modelo inspirado en las legendarias
+Les Paul de los años 50.
+</p>
+
+<div class="modal-price">
+S/ 10,137
+</div>
+
+<label for="carrito16" class="add-cart">
+🛒 Agregar al carrito
+</label>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     MODAL 17
+===================================================== -->
+
+<div class="modal modal-17">
+
+<div class="modal-box">
+
+<label for="producto17" class="modal-close">×</label>
+
+<div class="modal-content">
+
+<div class="modal-image">
+<img src="17.png" alt="Ibanez Prestige RG5120M">
+</div>
+
+<div class="modal-info">
+
+<h2>Ibanez Prestige RG5120M</h2>
+
+<p class="modal-type">
+RG Prestige - Premium
+</p>
+
+<p class="modal-description">
+Guitarra de gama alta orientada a
+guitarristas que buscan precisión
+y rendimiento.
+</p>
+
+<div class="modal-price">
+S/ 6,757
+</div>
+
+<label for="carrito17" class="add-cart">
+🛒 Agregar al carrito
+</label>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     MODAL 18
+===================================================== -->
+
+<div class="modal modal-18">
+
+<div class="modal-box">
+
+<label for="producto18" class="modal-close">×</label>
+
+<div class="modal-content">
+
+<div class="modal-image">
+<img src="18.png" alt="PRS Custom 24">
+</div>
+
+<div class="modal-info">
+
+<h2>PRS Custom 24</h2>
+
+<p class="modal-type">
+PRS Custom - Premium
+</p>
+
+<p class="modal-description">
+Uno de los modelos más reconocidos
+de PRS, con construcción premium
+y gran versatilidad.
+</p>
+
+<div class="modal-price">
+S/ 15,210
+</div>
+
+<label for="carrito18" class="add-cart">
+🛒 Agregar al carrito
+</label>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     MODAL 19
+===================================================== -->
+
+<div class="modal modal-19">
+
+<div class="modal-box">
+
+<label for="producto19" class="modal-close">×</label>
+
+<div class="modal-content">
+
+<div class="modal-image">
+<img src="19.png" alt="Music Man Majesty">
+</div>
+
+<div class="modal-info">
+
+<h2>Music Man Majesty</h2>
+
+<p class="modal-type">
+Modern Guitar
+</p>
+
+<p class="modal-description">
+Guitarra moderna de alta gama con
+diseño ergonómico y prestaciones
+profesionales.
+</p>
+
+<div class="modal-price">
+S/ 11,830
+</div>
+
+<label for="carrito19" class="add-cart">
+🛒 Agregar al carrito
+</label>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     MODAL 20
+===================================================== -->
+
+<div class="modal modal-20">
+
+<div class="modal-box">
+
+<label for="producto20" class="modal-close">×</label>
+
+<div class="modal-content">
+
+<div class="modal-image">
+<img src="20.png" alt="EVH Wolfgang Special">
+</div>
+
+<div class="modal-info">
+
+<h2>EVH Wolfgang Special</h2>
+
+<p class="modal-type">
+Modern Guitar
+</p>
+
+<p class="modal-description">
+Modelo inspirado en el estilo de
+Eddie Van Halen, diseñado para
+ofrecer potencia y comodidad.
+</p>
+
+<div class="modal-price">
+S/ 4,391
+</div>
+
+<label for="carrito20" class="add-cart">
+🛒 Agregar al carrito
+</label>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     CARRITO
+===================================================== -->
+
+<aside class="cart-panel">
+
+<div class="cart-title">
+
+<h2>
+🛒 Mi carrito
+</h2>
+
+<label for="carrito" class="close-cart">
+×
+</label>
+
+</div>
+
+
+<p class="cart-message">
+Los productos que agregues aparecerán aquí.
+</p>
+
+
+<!-- CARRITO 1 -->
+
+<div class="cart-product cart-product-1">
+
+<img src="1.png" alt="Squier Sonic Stratocaster">
+
+<div class="cart-product-info">
+
+<h3>
+Squier Sonic Stratocaster
+</h3>
+
+<p>
+S/ 673
+</p>
+
+</div>
+
+<label for="carrito1" class="remove-product">
+Quitar
+</label>
+
+</div>
+
+
+<!-- CARRITO 2 -->
+
+<div class="cart-product cart-product-2">
+
+<img src="2.png" alt="Epiphone Les Paul Special VE">
+
+<div class="cart-product-info">
+
+<h3>
+Epiphone Les Paul Special VE
+</h3>
+
+<p>
+S/ 673
+</p>
+
+</div>
+
+<label for="carrito2" class="remove-product">
+Quitar
+</label>
+
+</div>
+
+
+<!-- CARRITO 3 -->
+
+<div class="cart-product cart-product-3">
+
+<img src="3.png" alt="Yamaha Pacifica 112V">
+
+<div class="cart-product-info">
+
+<h3>
+Yamaha Pacifica 112V
+</h3>
+
+<p>
+S/ 1,112
+</p>
+
+</div>
+
+<label for="carrito3" class="remove-product">
+Quitar
+</label>
+
+</div>
+
+
+<!-- CARRITO 4 -->
+
+<div class="cart-product cart-product-4">
+
+<img src="4.png" alt="Jackson JS22 Dinky">
+
+<div class="cart-product-info">
+
+<h3>
+Jackson JS22 Dinky
+</h3>
+
+<p>
+S/ 673
+</p>
+
+</div>
+
+<label for="carrito4" class="remove-product">
+Quitar
+</label>
+
+</div>
+
+
+<!-- CARRITO 5 -->
+
+<div class="cart-product cart-product-5">
+
+<img src="5.png" alt="Ibanez GIO GRX70QA">
+
+<div class="cart-product-info">
+
+<h3>
+Ibanez GIO GRX70QA
+</h3>
+
+<p>
+S/ 842
+</p>
+
+</div>
+
+<label for="carrito5" class="remove-product">
+Quitar
+</label>
+
+</div>
+
+
+<!-- CARRITO 6 -->
+
+<div class="cart-product cart-product-6">
+
+<img src="6.png" alt="Kramer Baretta Special">
+
+<div class="cart-product-info">
+
+<h3>
+Kramer Baretta Special
+</h3>
+
+<p>
+S/ 774
+</p>
+
+</div>
+
+<label for="carrito6" class="remove-product">
+Quitar
+</label>
+
+</div>
+
+
+<!-- CARRITO 7 -->
+
+<div class="cart-product cart-product-7">
+
+<img src="7.png" alt="Squier Classic Vibe 60s Jazzmaster">
+
+<div class="cart-product-info">
+
+<h3>
+Squier Classic Vibe '60s Jazzmaster
+</h3>
+
+<p>
+S/ 1,450
+</p>
+
+</div>
+
+<label for="carrito7" class="remove-product">
+Quitar
+</label>
+
+</div>
+
+
+<!-- CARRITO 8 -->
+
+<div class="cart-product cart-product-8">
+
+<img src="8.png" alt="Gretsch G2622 Streamliner">
+
+<div class="cart-product-info">
+
+<h3>
+Gretsch G2622 Streamliner
+</h3>
+
+<p>
+S/ 1,856
+</p>
+
+</div>
+
+<label for="carrito8" class="remove-product">
+Quitar
+</label>
+
+</div>
+
+
+<!-- CARRITO 9 -->
+
+<div class="cart-product cart-product-9">
+
+<img src="9.png" alt="Epiphone Les Paul Standard 60s">
+
+<div class="cart-product-info">
+
+<h3>
+Epiphone Les Paul Standard '60s
+</h3>
+
+<p>
+S/ 2,363
+</p>
+
+</div>
+
+<label for="carrito9" class="remove-product">
+Quitar
+</label>
+
+</div>
+
+
+<!-- CARRITO 10 -->
+
+<div class="cart-product cart-product-10">
+
+<img src="10.png" alt="Fender Player Stratocaster">
+
+<div class="cart-product-info">
+
+<h3>
+Fender Player Stratocaster
+</h3>
+
+<p>
+S/ 2,701
+</p>
+
+</div>
+
+<label for="carrito10" class="remove-product">
+Quitar
+</label>
+
+</div>
+
+
+<!-- CARRITO 11 -->
+
+<div class="cart-product cart-product-11">
+
+<img src="11.png" alt="Fender Player Telecaster">
+
+<div class="cart-product-info">
+
+<h3>
+Fender Player Telecaster
+</h3>
+
+<p>
+S/ 2,701
+</p>
+
+</div>
+
+<label for="carrito11" class="remove-product">
+Quitar
+</label>
+
+</div>
+
+
+<!-- CARRITO 12 -->
+
+<div class="cart-product cart-product-12">
+
+<img src="12.png" alt="PRS SE Standard 24">
+
+<div class="cart-product-info">
+
+<h3>
+PRS SE Standard 24
+</h3>
+
+<p>
+S/ 2,532
+</p>
+
+</div>
+
+<label for="carrito12" class="remove-product">
+Quitar
+</label>
+
+</div>
+
+
+<!-- CARRITO 13 -->
+
+<div class="cart-product cart-product-13">
+
+<img src="13.png" alt="ESP LTD EC-256">
+
+<div class="cart-product-info">
+
+<h3>
+ESP LTD EC-256
+</h3>
+
+<p>
+S/ 2,025
+</p>
+
+</div>
+
+<label for="carrito13" class="remove-product">
+Quitar
+</label>
+
+</div>
+
+
+<!-- CARRITO 14 -->
+
+<div class="cart-product cart-product-14">
+
+<img src="14.png" alt="Ibanez RG421">
+
+<div class="cart-product-info">
+
+<h3>
+Ibanez RG421
+</h3>
+
+<p>
+S/ 1,180
+</p>
+
+</div>
+
+<label for="carrito14" class="remove-product">
+Quitar
+</label>
+
+</div>
+
+
+<!-- CARRITO 15 -->
+
+<div class="cart-product cart-product-15">
+
+<img src="15.png" alt="Fender American Professional II Strat">
+
+<div class="cart-product-info">
+
+<h3>
+Fender American Professional II Strat
+</h3>
+
+<p>
+S/ 5,743
+</p>
+
+</div>
+
+<label for="carrito15" class="remove-product">
+Quitar
+</label>
+
+</div>
+
+
+<!-- CARRITO 16 -->
+
+<div class="cart-product cart-product-16">
+
+<img src="16.png" alt="Gibson Les Paul Standard 50s">
+
+<div class="cart-product-info">
+
+<h3>
+Gibson Les Paul Standard '50s
+</h3>
+
+<p>
+S/ 10,137
+</p>
+
+</div>
+
+<label for="carrito16" class="remove-product">
+Quitar
+</label>
+
+</div>
+
+
+<!-- CARRITO 17 -->
+
+<div class="cart-product cart-product-17">
+
+<img src="17.png" alt="Ibanez Prestige RG5120M">
+
+<div class="cart-product-info">
+
+<h3>
+Ibanez Prestige RG5120M
+</h3>
+
+<p>
+S/ 6,757
+</p>
+
+</div>
+
+<label for="carrito17" class="remove-product">
+Quitar
+</label>
+
+</div>
+
+
+<!-- CARRITO 18 -->
+
+<div class="cart-product cart-product-18">
+
+<img src="18.png" alt="PRS Custom 24">
+
+<div class="cart-product-info">
+
+<h3>
+PRS Custom 24
+</h3>
+
+<p>
+S/ 15,210
+</p>
+
+</div>
+
+<label for="carrito18" class="remove-product">
+Quitar
+</label>
+
+</div>
+
+
+<!-- CARRITO 19 -->
+
+<div class="cart-product cart-product-19">
+
+<img src="19.png" alt="Music Man Majesty">
+
+<div class="cart-product-info">
+
+<h3>
+Music Man Majesty
+</h3>
+
+<p>
+S/ 11,830
+</p>
+
+</div>
+
+<label for="carrito19" class="remove-product">
+Quitar
+</label>
+
+</div>
+
+
+<!-- CARRITO 20 -->
+
+<div class="cart-product cart-product-20">
+
+<img src="20.png" alt="EVH Wolfgang Special">
+
+<div class="cart-product-info">
+
+<h3>
+EVH Wolfgang Special
+</h3>
+
+<p>
+S/ 4,391
+</p>
+
+</div>
+
+<label for="carrito20" class="remove-product">
+Quitar
+</label>
+
+</div>
+
+</aside>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+<div class="footer-links">
+
+<a href="C:\Users\RAUL MEDRANO\OneDrive\Desktop\pagina de guitarras\index.html">
+Inicio
+</a>
+
+<a href="contactos.html">
+Contacto
+</a>
+
+<a href="#">
+Envíos
+</a>
+
+<a href="#">
+Devoluciones
+</a>
+
+</div>
+
+<p>
+© 2026 Guitar Shop. Todos los derechos reservados.
+</p>
+
+</footer>
+
+</body>
+</html>
+```

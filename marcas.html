@@ -1,0 +1,1512 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+```
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Guitar Shop - Marcas</title>
+
+
+<style>
+
+    /* =====================================================
+       CONFIGURACIÓN GENERAL
+    ===================================================== */
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+
+        font-family:
+            'Segoe UI',
+            Tahoma,
+            Geneva,
+            Verdana,
+            sans-serif;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        background: #f0f2f5;
+        color: #333;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+
+    /* =====================================================
+       HEADER
+    ===================================================== */
+
+    .header {
+        background: #111;
+
+        color: white;
+
+        padding: 15px 40px;
+
+        box-shadow:
+            0 4px 10px rgba(0, 0, 0, .3);
+
+        position: sticky;
+
+        top: 0;
+
+        z-index: 1000;
+    }
+
+    .nav-bar {
+        max-width: 1300px;
+
+        margin: auto;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        gap: 20px;
+    }
+
+
+    /* =====================================================
+       LOGO
+    ===================================================== */
+
+    .logo-container {
+        display: flex;
+
+        align-items: center;
+
+        gap: 10px;
+
+        color: white;
+    }
+
+    .logo-icon {
+        width: 35px;
+
+        height: 35px;
+
+        fill: #ff9f1a;
+    }
+
+    .brand-name {
+        font-size: 1.5rem;
+
+        font-weight: 800;
+
+        letter-spacing: 2px;
+
+        text-transform: uppercase;
+    }
+
+    .brand-name span {
+        color: #ff9f1a;
+    }
+
+
+    /* =====================================================
+       MENÚ
+    ===================================================== */
+
+    .menu-links {
+        display: flex;
+
+        list-style: none;
+
+        gap: 25px;
+    }
+
+    .menu-links a {
+        color: #ccc;
+
+        font-size: .95rem;
+
+        transition: .3s;
+    }
+
+    .menu-links a:hover {
+        color: #ff9f1a;
+    }
+
+    .menu-links .active {
+        color: #ff9f1a;
+
+        font-weight: 700;
+    }
+
+
+    /* =====================================================
+       CARRITO
+    ===================================================== */
+
+    .cart-button {
+        display: flex;
+
+        align-items: center;
+
+        gap: 8px;
+
+        background: #222;
+
+        border: 1px solid #444;
+
+        color: white;
+
+        padding: 9px 16px;
+
+        border-radius: 20px;
+
+        transition: .3s;
+    }
+
+    .cart-button:hover {
+        background: #ff9f1a;
+
+        color: #111;
+
+        border-color: #ff9f1a;
+    }
+
+    .cart-button svg {
+        width: 18px;
+
+        height: 18px;
+
+        fill: currentColor;
+    }
+
+
+    /* =====================================================
+       BANNER PRINCIPAL
+    ===================================================== */
+
+    .brands-banner {
+        background:
+            linear-gradient(
+                rgba(0, 0, 0, .78),
+                rgba(0, 0, 0, .78)
+            ),
+            #222;
+
+        min-height: 350px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        text-align: center;
+
+        padding: 60px 20px;
+
+        position: relative;
+
+        overflow: hidden;
+    }
+
+    .brands-banner::before {
+        content: "";
+
+        position: absolute;
+
+        width: 350px;
+
+        height: 350px;
+
+        border-radius: 50%;
+
+        background: #ff9f1a;
+
+        opacity: .08;
+
+        top: -150px;
+
+        right: -80px;
+    }
+
+    .brands-banner::after {
+        content: "";
+
+        position: absolute;
+
+        width: 280px;
+
+        height: 280px;
+
+        border-radius: 50%;
+
+        background: #ff9f1a;
+
+        opacity: .06;
+
+        bottom: -130px;
+
+        left: -80px;
+    }
+
+    .banner-content {
+        position: relative;
+
+        z-index: 2;
+
+        max-width: 800px;
+    }
+
+    .banner-icon {
+        font-size: 3rem;
+
+        margin-bottom: 15px;
+    }
+
+    .banner-content h1 {
+        color: white;
+
+        font-size: 3rem;
+
+        text-transform: uppercase;
+
+        font-weight: 900;
+
+        margin-bottom: 15px;
+    }
+
+    .banner-content h1 span {
+        color: #ff9f1a;
+    }
+
+    .banner-content p {
+        color: #ccc;
+
+        font-size: 1.05rem;
+
+        line-height: 1.7;
+    }
+
+
+    /* =====================================================
+       TÍTULO DE SECCIÓN
+    ===================================================== */
+
+    .section-title {
+        text-align: center;
+
+        padding: 65px 20px 35px;
+    }
+
+    .section-title h2 {
+        color: #111;
+
+        font-size: 2rem;
+
+        margin-bottom: 10px;
+    }
+
+    .section-title h2 span {
+        color: #ff9f1a;
+    }
+
+    .section-title p {
+        color: #777;
+
+        max-width: 700px;
+
+        margin: auto;
+
+        line-height: 1.6;
+    }
+
+
+    /* =====================================================
+       CONTENEDOR DE MARCAS
+    ===================================================== */
+
+    .brands-container {
+        max-width: 1200px;
+
+        margin: 0 auto 70px;
+
+        padding: 0 20px;
+    }
+
+    .brands-grid {
+        display: grid;
+
+        grid-template-columns:
+            repeat(4, 1fr);
+
+        gap: 25px;
+    }
+
+
+    /* =====================================================
+       TARJETAS DE MARCAS
+    ===================================================== */
+
+    .brand-card {
+        background: white;
+
+        border-radius: 14px;
+
+        overflow: hidden;
+
+        box-shadow:
+            0 4px 12px rgba(0, 0, 0, .08);
+
+        transition:
+            transform .3s,
+            box-shadow .3s;
+
+        cursor: pointer;
+
+        min-height: 260px;
+
+        display: flex;
+
+        flex-direction: column;
+    }
+
+    .brand-card:hover {
+        transform: translateY(-7px);
+
+        box-shadow:
+            0 12px 25px rgba(0, 0, 0, .16);
+    }
+
+
+    /* =====================================================
+       ÁREA DEL LOGO
+    ===================================================== */
+
+    .brand-logo {
+        height: 150px;
+
+        background: #111;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        position: relative;
+
+        overflow: hidden;
+    }
+
+    .brand-logo::before {
+        content: "";
+
+        position: absolute;
+
+        width: 150px;
+
+        height: 150px;
+
+        border-radius: 50%;
+
+        background: #ff9f1a;
+
+        opacity: .08;
+
+        top: -75px;
+
+        right: -60px;
+    }
+
+    .brand-logo span {
+        color: white;
+
+        font-size: 1.7rem;
+
+        font-weight: 900;
+
+        letter-spacing: 1px;
+
+        position: relative;
+
+        z-index: 2;
+
+        text-transform: uppercase;
+
+        transition: .3s;
+    }
+
+    .brand-card:hover .brand-logo span {
+        color: #ff9f1a;
+
+        transform: scale(1.08);
+    }
+
+
+    /* =====================================================
+       INFORMACIÓN DE MARCA
+    ===================================================== */
+
+    .brand-info {
+        padding: 20px;
+
+        text-align: center;
+
+        flex: 1;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+    }
+
+    .brand-info h3 {
+        color: #111;
+
+        font-size: 1.15rem;
+
+        margin-bottom: 8px;
+    }
+
+    .brand-info p {
+        color: #777;
+
+        font-size: .85rem;
+
+        line-height: 1.5;
+
+        margin-bottom: 15px;
+    }
+
+    .brand-button {
+        margin-top: auto;
+
+        display: inline-block;
+
+        background: #111;
+
+        color: white;
+
+        padding: 9px 18px;
+
+        border-radius: 6px;
+
+        font-size: .8rem;
+
+        font-weight: 700;
+
+        transition: .3s;
+    }
+
+    .brand-card:hover .brand-button {
+        background: #ff9f1a;
+
+        color: #111;
+    }
+
+
+    /* =====================================================
+       SECCIÓN INFORMATIVA
+    ===================================================== */
+
+    .brand-info-section {
+        background: white;
+
+        padding: 70px 20px;
+    }
+
+    .brand-info-container {
+        max-width: 1100px;
+
+        margin: auto;
+
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+
+        gap: 50px;
+
+        align-items: center;
+    }
+
+    .info-text h2 {
+        color: #111;
+
+        font-size: 2rem;
+
+        margin-bottom: 15px;
+    }
+
+    .info-text h2 span {
+        color: #ff9f1a;
+    }
+
+    .info-text p {
+        color: #666;
+
+        line-height: 1.8;
+
+        margin-bottom: 15px;
+    }
+
+    .info-list {
+        list-style: none;
+
+        margin-top: 20px;
+    }
+
+    .info-list li {
+        color: #555;
+
+        margin-bottom: 12px;
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 10px;
+    }
+
+    .info-list li span {
+        color: #ff9f1a;
+
+        font-size: 1.2rem;
+    }
+
+
+    /* =====================================================
+       BLOQUE VISUAL
+    ===================================================== */
+
+    .info-visual {
+        background: #111;
+
+        min-height: 320px;
+
+        border-radius: 15px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        position: relative;
+
+        overflow: hidden;
+
+        box-shadow:
+            0 10px 25px rgba(0, 0, 0, .15);
+    }
+
+    .info-visual::before {
+        content: "";
+
+        position: absolute;
+
+        width: 300px;
+
+        height: 300px;
+
+        border-radius: 50%;
+
+        border: 2px solid #ff9f1a;
+
+        opacity: .15;
+    }
+
+    .info-visual::after {
+        content: "";
+
+        position: absolute;
+
+        width: 220px;
+
+        height: 220px;
+
+        border-radius: 50%;
+
+        border: 2px solid #ff9f1a;
+
+        opacity: .12;
+    }
+
+    .visual-content {
+        text-align: center;
+
+        position: relative;
+
+        z-index: 2;
+    }
+
+    .visual-content .guitar-icon {
+        font-size: 5rem;
+
+        display: block;
+
+        margin-bottom: 15px;
+    }
+
+    .visual-content h3 {
+        color: white;
+
+        font-size: 1.4rem;
+    }
+
+    .visual-content h3 span {
+        color: #ff9f1a;
+    }
+
+
+    /* =====================================================
+       LLAMADO A LA ACCIÓN
+    ===================================================== */
+
+    .cta {
+        background: #111;
+
+        text-align: center;
+
+        padding: 70px 20px;
+    }
+
+    .cta h2 {
+        color: white;
+
+        font-size: 2.2rem;
+
+        margin-bottom: 12px;
+    }
+
+    .cta h2 span {
+        color: #ff9f1a;
+    }
+
+    .cta p {
+        color: #aaa;
+
+        max-width: 650px;
+
+        margin: 0 auto 25px;
+
+        line-height: 1.6;
+    }
+
+    .cta-button {
+        display: inline-block;
+
+        background: #ff9f1a;
+
+        color: #111;
+
+        padding: 13px 28px;
+
+        border-radius: 7px;
+
+        font-weight: 800;
+
+        transition: .3s;
+    }
+
+    .cta-button:hover {
+        background: white;
+
+        transform: translateY(-3px);
+    }
+
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+
+    .footer {
+        background: #080808;
+
+        color: #888;
+
+        padding: 35px 20px;
+
+        text-align: center;
+
+        font-size: .85rem;
+    }
+
+    .footer-links {
+        display: flex;
+
+        justify-content: center;
+
+        gap: 25px;
+
+        margin-bottom: 15px;
+
+        flex-wrap: wrap;
+    }
+
+    .footer-links a {
+        color: #aaa;
+
+        transition: .3s;
+    }
+
+    .footer-links a:hover {
+        color: #ff9f1a;
+    }
+
+    .footer-line {
+        width: 100%;
+
+        max-width: 500px;
+
+        height: 1px;
+
+        background: #333;
+
+        margin: 15px auto;
+    }
+
+
+    /* =====================================================
+       RESPONSIVE
+    ===================================================== */
+
+    @media (max-width: 1000px) {
+
+        .brands-grid {
+            grid-template-columns:
+                repeat(3, 1fr);
+        }
+
+    }
+
+
+    @media (max-width: 800px) {
+
+        .brand-info-container {
+            grid-template-columns: 1fr;
+        }
+
+        .brands-grid {
+            grid-template-columns:
+                repeat(2, 1fr);
+        }
+
+        .banner-content h1 {
+            font-size: 2.5rem;
+        }
+
+    }
+
+
+    @media (max-width: 650px) {
+
+        .header {
+            padding: 15px 20px;
+        }
+
+        .nav-bar {
+            flex-wrap: wrap;
+
+            justify-content: center;
+        }
+
+        .menu-links {
+            order: 3;
+
+            width: 100%;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 15px;
+        }
+
+    }
+
+
+    @media (max-width: 500px) {
+
+        .brand-name {
+            font-size: 1.2rem;
+        }
+
+        .menu-links {
+            display: none;
+        }
+
+        .brands-grid {
+            grid-template-columns: 1fr 1fr;
+
+            gap: 12px;
+        }
+
+        .brand-logo {
+            height: 120px;
+        }
+
+        .brand-logo span {
+            font-size: 1.15rem;
+        }
+
+        .brand-info {
+            padding: 15px 10px;
+        }
+
+        .brand-info h3 {
+            font-size: 1rem;
+        }
+
+        .brand-info p {
+            font-size: .75rem;
+        }
+
+        .brand-button {
+            padding: 8px 12px;
+
+            font-size: .72rem;
+        }
+
+        .banner-content h1 {
+            font-size: 2rem;
+        }
+
+        .banner-content p {
+            font-size: .9rem;
+        }
+
+    }
+
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+    <nav class="nav-bar">
+
+
+        <!-- LOGO -->
+
+        <a
+            href="inicio.html"
+            class="logo-container"
+        >
+
+            <svg
+                class="logo-icon"
+                viewBox="0 0 24 24"
+            >
+
+                <path
+                    d="M12 2L4 7v6c0 5.55 3.84 10.74 8 12 4.16-1.26 8-6.45 8-12V7l-8-5zm0 4a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"
+                />
+
+            </svg>
+
+            <span class="brand-name">
+                Guitar <span>Shop</span>
+            </span>
+
+        </a>
+
+
+     
+       <ul class="menu-links">
+
+            <li>
+                <a
+                    href="C:\Users\RAUL MEDRANO\OneDrive\Desktop\pagina de guitarras\index.html"
+                    class="active"
+                >
+                    Inicio
+                </a>
+            </li>
+
+            <li>
+                <a href="C:\Users\RAUL MEDRANO\OneDrive\Desktop\pagina de guitarras\catalogo.html">
+                    Catálogo
+                </a>
+            </li>
+
+            <li>
+                <a href="C:\Users\RAUL MEDRANO\OneDrive\Desktop\pagina de guitarras\marcas.html">
+                    Marcas
+                </a>
+            </li>
+
+            <li>
+                <a href="C:\Users\RAUL MEDRANO\OneDrive\Desktop\pagina de guitarras\ofertas.html">
+                    Ofertas
+                </a>
+            </li>
+
+            <li>
+                <a href="C:\Users\RAUL MEDRANO\OneDrive\Desktop\pagina de guitarras\contactos.html">
+                    Contacto
+                </a>
+            </li>
+
+        </ul>
+
+        <!-- CARRITO -->
+
+        <a
+            href="catalogo.html"
+            class="cart-button"
+        >
+
+            <svg viewBox="0 0 24 24">
+
+                <path
+                    d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1z"
+                />
+
+            </svg>
+
+            <span>
+                Carrito
+            </span>
+
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<!-- =====================================================
+     BANNER
+===================================================== -->
+
+<section class="brands-banner">
+
+    <div class="banner-content">
+
+        <div class="banner-icon">
+            ⭐
+        </div>
+
+        <h1>
+            Nuestras
+            <span>Marcas</span>
+        </h1>
+
+        <p>
+            Conoce algunas de las marcas de guitarras
+            más reconocidas y descubre diferentes
+            estilos, diseños y posibilidades sonoras.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     TÍTULO
+===================================================== -->
+
+<section class="section-title">
+
+    <h2>
+        Marcas disponibles en
+        <span>Guitar Shop</span>
+    </h2>
+
+    <p>
+        Explora nuestra selección de marcas y encuentra
+        el modelo que estás buscando.
+    </p>
+
+</section>
+
+
+
+<!-- =====================================================
+     MARCAS
+===================================================== -->
+
+<main class="brands-container">
+
+    <div class="brands-grid">
+
+
+        <!-- =================================================
+             FENDER
+        ================================================= -->
+
+        <article class="brand-card">
+
+            <div class="brand-logo">
+
+                <span>
+                    Fender
+                </span>
+
+            </div>
+
+            <div class="brand-info">
+
+                <h3>
+                    Fender
+                </h3>
+
+                <p>
+                    Guitarras y bajos conocidos por sus
+                    diseños clásicos y versátiles.
+                </p>
+
+                <a
+                    href="catalogo.html"
+                    class="brand-button"
+                >
+                    Ver guitarras
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             SQUIER
+        ================================================= -->
+
+        <article class="brand-card">
+
+            <div class="brand-logo">
+
+                <span>
+                    Squier
+                </span>
+
+            </div>
+
+            <div class="brand-info">
+
+                <h3>
+                    Squier
+                </h3>
+
+                <p>
+                    Modelos inspirados en diseños clásicos
+                    de Fender.
+                </p>
+
+                <a
+                    href="catalogo.html"
+                    class="brand-button"
+                >
+                    Ver guitarras
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             GIBSON
+        ================================================= -->
+
+        <article class="brand-card">
+
+            <div class="brand-logo">
+
+                <span>
+                    Gibson
+                </span>
+
+            </div>
+
+            <div class="brand-info">
+
+                <h3>
+                    Gibson
+                </h3>
+
+                <p>
+                    Marca reconocida por sus guitarras
+                    eléctricas de diseños tradicionales.
+                </p>
+
+                <a
+                    href="catalogo.html"
+                    class="brand-button"
+                >
+                    Ver guitarras
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             EPIPHONE
+        ================================================= -->
+
+        <article class="brand-card">
+
+            <div class="brand-logo">
+
+                <span>
+                    Epiphone
+                </span>
+
+            </div>
+
+            <div class="brand-info">
+
+                <h3>
+                    Epiphone
+                </h3>
+
+                <p>
+                    Guitarras con diferentes diseños
+                    inspirados en modelos clásicos.
+                </p>
+
+                <a
+                    href="catalogo.html"
+                    class="brand-button"
+                >
+                    Ver guitarras
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             YAMAHA
+        ================================================= -->
+
+        <article class="brand-card">
+
+            <div class="brand-logo">
+
+                <span>
+                    Yamaha
+                </span>
+
+            </div>
+
+            <div class="brand-info">
+
+                <h3>
+                    Yamaha
+                </h3>
+
+                <p>
+                    Instrumentos musicales para diferentes
+                    niveles y estilos.
+                </p>
+
+                <a
+                    href="catalogo.html"
+                    class="brand-button"
+                >
+                    Ver guitarras
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             IBANEZ
+        ================================================= -->
+
+        <article class="brand-card">
+
+            <div class="brand-logo">
+
+                <span>
+                    Ibanez
+                </span>
+
+            </div>
+
+            <div class="brand-info">
+
+                <h3>
+                    Ibanez
+                </h3>
+
+                <p>
+                    Diseños modernos y modelos orientados
+                    a diferentes estilos musicales.
+                </p>
+
+                <a
+                    href="catalogo.html"
+                    class="brand-button"
+                >
+                    Ver guitarras
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             JACKSON
+        ================================================= -->
+
+        <article class="brand-card">
+
+            <div class="brand-logo">
+
+                <span>
+                    Jackson
+                </span>
+
+            </div>
+
+            <div class="brand-info">
+
+                <h3>
+                    Jackson
+                </h3>
+
+                <p>
+                    Diseños modernos asociados especialmente
+                    con estilos de rock y metal.
+                </p>
+
+                <a
+                    href="catalogo.html"
+                    class="brand-button"
+                >
+                    Ver guitarras
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             PRS
+        ================================================= -->
+
+        <article class="brand-card">
+
+            <div class="brand-logo">
+
+                <span>
+                    PRS
+                </span>
+
+            </div>
+
+            <div class="brand-info">
+
+                <h3>
+                    PRS
+                </h3>
+
+                <p>
+                    Guitarras con diseños modernos,
+                    acabados variados y diferentes configuraciones.
+                </p>
+
+                <a
+                    href="catalogo.html"
+                    class="brand-button"
+                >
+                    Ver guitarras
+                </a>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+</main>
+
+
+
+<!-- =====================================================
+     INFORMACIÓN SOBRE LAS MARCAS
+===================================================== -->
+
+<section class="brand-info-section">
+
+    <div class="brand-info-container">
+
+
+        <div class="info-text">
+
+            <h2>
+                Encuentra tu
+                <span>estilo</span>
+            </h2>
+
+            <p>
+                Cada marca cuenta con diferentes diseños,
+                configuraciones y características. En
+                Guitar Shop puedes explorar diferentes
+                alternativas desde modelos clásicos
+                hasta diseños modernos.
+            </p>
+
+            <p>
+                Visita nuestro catálogo para conocer
+                los instrumentos disponibles y revisar
+                sus precios y características.
+            </p>
+
+
+            <ul class="info-list">
+
+                <li>
+                    <span>✓</span>
+                    Diferentes diseños de guitarras
+                </li>
+
+                <li>
+                    <span>✓</span>
+                    Modelos para distintos estilos musicales
+                </li>
+
+                <li>
+                    <span>✓</span>
+                    Opciones para diferentes niveles
+                </li>
+
+                <li>
+                    <span>✓</span>
+                    Catálogo actualizado
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <div class="info-visual">
+
+            <div class="visual-content">
+
+                <span class="guitar-icon">
+                    🎸
+                </span>
+
+                <h3>
+                    Tu sonido.
+                    <span>Tu estilo.</span>
+                </h3>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     LLAMADO A LA ACCIÓN
+===================================================== -->
+
+<section class="cta">
+
+    <h2>
+        ¿Ya encontraste tu
+        <span>marca?</span>
+    </h2>
+
+    <p>
+        Revisa nuestro catálogo y descubre los modelos
+        de guitarras disponibles en Guitar Shop.
+    </p>
+
+    <a
+        href="catalogo.html"
+        class="cta-button"
+    >
+        Ver catálogo
+    </a>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+    <div class="footer-links">
+
+        <a href="inicio.html">
+            Inicio
+        </a>
+
+        <a href="catalogo.html">
+            Catálogo
+        </a>
+
+        <a href="marcas.html">
+            Marcas
+        </a>
+
+        <a href="ofertas.html">
+            Ofertas
+        </a>
+
+        <a href="contacto.html">
+            Contacto
+        </a>
+
+    </div>
+
+    <div class="footer-line"></div>
+
+    <p>
+        © 2026 Guitar Shop.
+        Todos los derechos reservados.
+    </p>
+
+</footer>
+```
+
+</body>
+
+</html>

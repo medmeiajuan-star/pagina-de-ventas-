@@ -1,0 +1,1217 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Guitar Shop - Contacto</title>
+
+  <style>
+
+    /* =====================================================
+       CONFIGURACIÓN GENERAL
+    ===================================================== */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: #f0f2f5;
+      color: #333;
+      min-height: 100vh;
+    }
+
+    /* =====================================================
+       HEADER
+    ===================================================== */
+
+    .header {
+      background: #111;
+      color: white;
+      padding: 15px 40px;
+
+      box-shadow: 0 4px 10px rgba(0,0,0,.3);
+
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-bar {
+      max-width: 1300px;
+      margin: auto;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    /* =====================================================
+       LOGO
+    ===================================================== */
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      color: white;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      fill: #ff9f1a;
+    }
+
+    .brand-name {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .brand-name span {
+      color: #ff9f1a;
+    }
+
+    /* =====================================================
+       MENU
+    ===================================================== */
+
+    .menu-links {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+    }
+
+    .menu-links a {
+      color: #ccc;
+      text-decoration: none;
+      transition: .3s;
+    }
+
+    .menu-links a:hover {
+      color: #ff9f1a;
+    }
+
+    .menu-links a.active {
+      color: #ff9f1a;
+      font-weight: 700;
+    }
+
+    /* =====================================================
+       CARRITO
+    ===================================================== */
+
+    .cart-button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      background: #222;
+      border: 1px solid #444;
+
+      color: white;
+
+      padding: 9px 16px;
+      border-radius: 20px;
+
+      cursor: pointer;
+
+      position: relative;
+
+      transition: .3s;
+    }
+
+    .cart-button:hover {
+      background: #ff9f1a;
+      color: #111;
+      border-color: #ff9f1a;
+    }
+
+    .cart-button svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    .cart-count {
+      position: absolute;
+
+      top: -8px;
+      right: -8px;
+
+      width: 21px;
+      height: 21px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: #ff3b30;
+      color: white;
+
+      border-radius: 50%;
+
+      font-size: .7rem;
+      font-weight: bold;
+    }
+
+    /* =====================================================
+       BANNER DE CONTACTO
+    ===================================================== */
+
+    .contact-banner {
+      background:
+        linear-gradient(
+          rgba(17,17,17,.88),
+          rgba(17,17,17,.88)
+        );
+
+      color: white;
+
+      text-align: center;
+
+      padding: 60px 20px;
+    }
+
+    .contact-banner h1 {
+      font-size: 2.5rem;
+      margin-bottom: 12px;
+    }
+
+    .contact-banner h1 span {
+      color: #ff9f1a;
+    }
+
+    .contact-banner p {
+      color: #ccc;
+      max-width: 650px;
+      margin: auto;
+      line-height: 1.6;
+    }
+
+    /* =====================================================
+       CONTENEDOR PRINCIPAL
+    ===================================================== */
+
+    .contact-container {
+      max-width: 1200px;
+      margin: 50px auto;
+
+      padding: 0 20px;
+
+      display: grid;
+
+      grid-template-columns:
+        1fr 1.3fr;
+
+      gap: 30px;
+    }
+
+    /* =====================================================
+       INFORMACIÓN DE CONTACTO
+    ===================================================== */
+
+    .contact-info {
+      background: white;
+
+      border-radius: 15px;
+
+      padding: 35px;
+
+      box-shadow:
+        0 4px 15px rgba(0,0,0,.08);
+    }
+
+    .contact-info h2 {
+      color: #111;
+
+      font-size: 1.7rem;
+
+      margin-bottom: 10px;
+    }
+
+    .contact-info > p {
+      color: #666;
+
+      line-height: 1.6;
+
+      margin-bottom: 25px;
+    }
+
+    /* =====================================================
+       TARJETAS DE INFORMACIÓN
+    ===================================================== */
+
+    .info-item {
+      display: flex;
+
+      align-items: flex-start;
+
+      gap: 15px;
+
+      padding: 18px 0;
+
+      border-bottom: 1px solid #eee;
+    }
+
+    .info-item:last-child {
+      border-bottom: none;
+    }
+
+    .info-icon {
+      width: 45px;
+      height: 45px;
+
+      min-width: 45px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      background: #fff2df;
+
+      color: #ff9f1a;
+
+      border-radius: 50%;
+
+      font-size: 20px;
+    }
+
+    .info-item h3 {
+      color: #111;
+
+      font-size: 1rem;
+
+      margin-bottom: 5px;
+    }
+
+    .info-item p,
+    .info-item a {
+      color: #666;
+
+      font-size: .9rem;
+
+      line-height: 1.5;
+
+      text-decoration: none;
+    }
+
+    .info-item a:hover {
+      color: #ff9f1a;
+    }
+
+    /* =====================================================
+       HORARIO
+    ===================================================== */
+
+    .schedule {
+      margin-top: 25px;
+
+      background: #111;
+
+      color: white;
+
+      padding: 20px;
+
+      border-radius: 10px;
+    }
+
+    .schedule h3 {
+      color: #ff9f1a;
+
+      margin-bottom: 10px;
+    }
+
+    .schedule p {
+      color: #ccc;
+
+      font-size: .9rem;
+
+      line-height: 1.7;
+    }
+
+    /* =====================================================
+       FORMULARIO
+    ===================================================== */
+
+    .contact-form-box {
+      background: white;
+
+      border-radius: 15px;
+
+      padding: 35px;
+
+      box-shadow:
+        0 4px 15px rgba(0,0,0,.08);
+    }
+
+    .contact-form-box h2 {
+      color: #111;
+
+      font-size: 1.7rem;
+
+      margin-bottom: 8px;
+    }
+
+    .form-description {
+      color: #666;
+
+      margin-bottom: 25px;
+
+      line-height: 1.5;
+    }
+
+    .contact-form {
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 18px;
+    }
+
+    .form-group {
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 7px;
+    }
+
+    .form-group label {
+      color: #222;
+
+      font-size: .9rem;
+
+      font-weight: 700;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+
+      width: 100%;
+
+      border: 1px solid #ddd;
+
+      border-radius: 7px;
+
+      padding: 12px 14px;
+
+      font-size: .9rem;
+
+      color: #333;
+
+      background: #fafafa;
+
+      outline: none;
+
+      transition: .3s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+
+      border-color: #ff9f1a;
+
+      background: white;
+
+      box-shadow:
+        0 0 0 3px rgba(255,159,26,.12);
+    }
+
+    .form-group textarea {
+
+      min-height: 140px;
+
+      resize: vertical;
+    }
+
+    /* =====================================================
+       BOTÓN ENVIAR
+    ===================================================== */
+
+    .submit-button {
+
+      border: none;
+
+      background: #ff9f1a;
+
+      color: #111;
+
+      padding: 13px 20px;
+
+      border-radius: 7px;
+
+      font-size: .95rem;
+
+      font-weight: 800;
+
+      cursor: pointer;
+
+      transition: .3s;
+    }
+
+    .submit-button:hover {
+
+      background: #111;
+
+      color: white;
+
+      transform: translateY(-2px);
+    }
+
+    /* =====================================================
+       AVISO DEL FORMULARIO
+    ===================================================== */
+
+    .form-note {
+
+      color: #777;
+
+      font-size: .75rem;
+
+      line-height: 1.5;
+
+      margin-top: 2px;
+    }
+
+    /* =====================================================
+       SECCIÓN REDES
+    ===================================================== */
+
+    .social-section {
+
+      max-width: 1200px;
+
+      margin: 0 auto 50px;
+
+      padding: 0 20px;
+    }
+
+    .social-box {
+
+      background: #111;
+
+      color: white;
+
+      border-radius: 15px;
+
+      padding: 30px;
+
+      text-align: center;
+    }
+
+    .social-box h2 {
+
+      margin-bottom: 8px;
+    }
+
+    .social-box p {
+
+      color: #aaa;
+
+      margin-bottom: 20px;
+    }
+
+    .social-links {
+
+      display: flex;
+
+      justify-content: center;
+
+      gap: 12px;
+
+      flex-wrap: wrap;
+    }
+
+    .social-link {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding: 10px 18px;
+
+      border-radius: 20px;
+
+      background: #222;
+
+      color: #ddd;
+
+      text-decoration: none;
+
+      border: 1px solid #444;
+
+      transition: .3s;
+    }
+
+    .social-link:hover {
+
+      background: #ff9f1a;
+
+      color: #111;
+
+      border-color: #ff9f1a;
+    }
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+
+    .footer {
+
+      background: #111;
+
+      color: #888;
+
+      padding: 30px 20px;
+
+      text-align: center;
+
+      font-size: .85rem;
+    }
+
+    .footer-links {
+
+      display: flex;
+
+      justify-content: center;
+
+      gap: 20px;
+
+      margin-bottom: 12px;
+
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+
+      color: #aaa;
+
+      text-decoration: none;
+
+      transition: .3s;
+    }
+
+    .footer-links a:hover {
+
+      color: #ff9f1a;
+    }
+
+    /* =====================================================
+       RESPONSIVE
+    ===================================================== */
+
+    @media(max-width: 850px) {
+
+      .contact-container {
+
+        grid-template-columns: 1fr;
+      }
+
+      .nav-bar {
+
+        justify-content: center;
+      }
+
+      .menu-links {
+
+        order: 3;
+
+        width: 100%;
+
+        justify-content: center;
+
+        flex-wrap: wrap;
+
+        gap: 15px;
+      }
+
+    }
+
+    @media(max-width: 500px) {
+
+      .header {
+
+        padding: 15px 20px;
+      }
+
+      .menu-links {
+
+        display: none;
+      }
+
+      .contact-banner {
+
+        padding: 45px 15px;
+      }
+
+      .contact-banner h1 {
+
+        font-size: 2rem;
+      }
+
+      .contact-container {
+
+        margin: 30px auto;
+
+        padding: 0 12px;
+      }
+
+      .contact-info,
+      .contact-form-box {
+
+        padding: 25px 20px;
+      }
+
+      .social-section {
+
+        padding: 0 12px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- =====================================================
+       HEADER
+  ====================================================== -->
+
+  <header class="header">
+
+    <div class="nav-bar">
+
+
+      <!-- LOGO -->
+
+      <a href="inicio.html" class="logo-container">
+
+        <svg
+          class="logo-icon"
+          viewBox="0 0 24 24"
+        >
+
+          <path
+            d="M12 2L4 7v6c0 5.55 3.84 10.74 8 12 4.16-1.26 8-6.45 8-12V7l-8-5zm0 4a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"
+          />
+
+        </svg>
+
+
+        <span class="brand-name">
+
+          Guitar
+          <span>Shop</span>
+
+        </span>
+
+      </a>
+
+
+      
+        <ul class="menu-links">
+
+            <li>
+                <a
+                    href="C:\Users\RAUL MEDRANO\OneDrive\Desktop\pagina de guitarras\index.html"
+                    class="active"
+                >
+                    Inicio
+                </a>
+            </li>
+
+            <li>
+                <a href="C:\Users\RAUL MEDRANO\OneDrive\Desktop\pagina de guitarras\catalogo.html">
+                    Catálogo
+                </a>
+            </li>
+
+            <li>
+                <a href="C:\Users\RAUL MEDRANO\OneDrive\Desktop\pagina de guitarras\marcas.html">
+                    Marcas
+                </a>
+            </li>
+
+            <li>
+                <a href="C:\Users\RAUL MEDRANO\OneDrive\Desktop\pagina de guitarras\ofertas.html">
+                    Ofertas
+                </a>
+            </li>
+
+            <li>
+                <a href="C:\Users\RAUL MEDRANO\OneDrive\Desktop\pagina de guitarras\contactos.html">
+                    Contacto
+                </a>
+            </li>
+
+        </ul>
+
+      <!-- CARRITO -->
+
+      <a
+        href="catalogo.html"
+        class="cart-button"
+      >
+
+        <svg viewBox="0 0 24 24">
+
+          <path
+            d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1z"
+          />
+
+        </svg>
+
+        <span>
+          Carrito
+        </span>
+
+        <span class="cart-count">
+          +
+        </span>
+
+      </a>
+
+
+    </div>
+
+  </header>
+
+
+  <!-- =====================================================
+       BANNER
+  ====================================================== -->
+
+  <section class="contact-banner">
+
+    <h1>
+      Ponte en <span>Contacto</span>
+    </h1>
+
+    <p>
+      ¿Tienes alguna pregunta sobre nuestras guitarras,
+      precios, disponibilidad o envíos?
+      Estamos aquí para ayudarte.
+    </p>
+
+  </section>
+
+
+  <!-- =====================================================
+       CONTENIDO PRINCIPAL
+  ====================================================== -->
+
+  <main class="contact-container">
+
+
+    <!-- ===================================================
+         INFORMACIÓN DE CONTACTO
+    ==================================================== -->
+
+    <section class="contact-info">
+
+      <h2>
+        Información de contacto
+      </h2>
+
+      <p>
+        Puedes comunicarte con nosotros mediante cualquiera
+        de los siguientes medios. Nuestro equipo estará
+        encantado de atender tus consultas.
+      </p>
+
+
+      <!-- CORREO -->
+
+      <div class="info-item">
+
+        <div class="info-icon">
+          ✉
+        </div>
+
+        <div>
+
+          <h3>
+            Correo electrónico
+          </h3>
+
+          <a href="mailto:ventas@guitarshop.com">
+            ventas@guitarshop.com
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- TELÉFONO -->
+
+      <div class="info-item">
+
+        <div class="info-icon">
+          ☎
+        </div>
+
+        <div>
+
+          <h3>
+            Teléfono
+          </h3>
+
+          <a href="tel:+51999999999">
+            +51 999 999 999
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- DIRECCIÓN -->
+
+      <div class="info-item">
+
+        <div class="info-icon">
+          📍
+        </div>
+
+        <div>
+
+          <h3>
+            Dirección
+          </h3>
+
+          <p>
+            Lima, Perú
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- WHATSAPP -->
+
+      <div class="info-item">
+
+        <div class="info-icon">
+          💬
+        </div>
+
+        <div>
+
+          <h3>
+            WhatsApp
+          </h3>
+
+          <a href="#">
+            Escríbenos por WhatsApp
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- HORARIO -->
+
+      <div class="schedule">
+
+        <h3>
+          🕐 Horario de atención
+        </h3>
+
+        <p>
+          Lunes a viernes: 9:00 AM - 7:00 PM
+          <br>
+          Sábados: 9:00 AM - 5:00 PM
+          <br>
+          Domingos: Cerrado
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         FORMULARIO
+    ==================================================== -->
+
+    <section class="contact-form-box">
+
+      <h2>
+        Envíanos un mensaje
+      </h2>
+
+      <p class="form-description">
+        Completa el siguiente formulario y nos pondremos
+        en contacto contigo.
+      </p>
+
+
+      <form
+        class="contact-form"
+        action="#"
+        method="post"
+      >
+
+
+        <!-- NOMBRE -->
+
+        <div class="form-group">
+
+          <label for="nombre">
+            Nombre completo
+          </label>
+
+          <input
+            type="text"
+            id="nombre"
+            name="nombre"
+            placeholder="Ingresa tu nombre"
+            required
+          >
+
+        </div>
+
+
+        <!-- EMAIL -->
+
+        <div class="form-group">
+
+          <label for="email">
+            Correo electrónico
+          </label>
+
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="ejemplo@correo.com"
+            required
+          >
+
+        </div>
+
+
+        <!-- TELÉFONO -->
+
+        <div class="form-group">
+
+          <label for="telefono">
+            Teléfono
+          </label>
+
+          <input
+            type="tel"
+            id="telefono"
+            name="telefono"
+            placeholder="999 999 999"
+          >
+
+        </div>
+
+
+        <!-- MOTIVO -->
+
+        <div class="form-group">
+
+          <label for="motivo">
+            Motivo de consulta
+          </label>
+
+          <select
+            id="motivo"
+            name="motivo"
+            required
+          >
+
+            <option value="">
+              Selecciona una opción
+            </option>
+
+            <option value="producto">
+              Consulta sobre un producto
+            </option>
+
+            <option value="precio">
+              Consulta sobre precios
+            </option>
+
+            <option value="envio">
+              Información sobre envíos
+            </option>
+
+            <option value="pedido">
+              Consulta sobre mi pedido
+            </option>
+
+            <option value="otro">
+              Otro
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- MENSAJE -->
+
+        <div class="form-group">
+
+          <label for="mensaje">
+            Mensaje
+          </label>
+
+          <textarea
+            id="mensaje"
+            name="mensaje"
+            placeholder="Escribe tu consulta..."
+            required
+          ></textarea>
+
+        </div>
+
+
+        <!-- BOTÓN -->
+
+        <button
+          type="submit"
+          class="submit-button"
+        >
+
+          ✉ Enviar mensaje
+
+        </button>
+
+
+        <p class="form-note">
+
+          Al enviar este formulario, tus datos serán utilizados
+          únicamente para responder a tu consulta.
+
+        </p>
+
+      </form>
+
+    </section>
+
+
+  </main>
+
+
+  <!-- =====================================================
+       REDES SOCIALES
+  ====================================================== -->
+
+  <section class="social-section">
+
+    <div class="social-box">
+
+      <h2>
+        Síguenos
+      </h2>
+
+      <p>
+        Mantente al tanto de nuestras novedades,
+        productos y promociones.
+      </p>
+
+
+      <div class="social-links">
+
+        <a
+          href="#"
+          class="social-link"
+        >
+          📘 Facebook
+        </a>
+
+        <a
+          href="#"
+          class="social-link"
+        >
+          📸 Instagram
+        </a>
+
+        <a
+          href="#"
+          class="social-link"
+        >
+          🎵 TikTok
+        </a>
+
+        <a
+          href="#"
+          class="social-link"
+        >
+          ▶ YouTube
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <footer class="footer">
+
+    <div class="footer-links">
+
+      <a href="inicio.html">
+        Inicio
+      </a>
+
+      <a href="catalogo.html">
+        Catálogo
+      </a>
+
+      <a href="marcas.html">
+        Marcas
+      </a>
+
+      <a href="ofertas.html">
+        Ofertas
+      </a>
+
+      <a href="contacto.html">
+        Contacto
+      </a>
+
+    </div>
+
+    <p>
+      © 2026 Guitar Shop. Todos los derechos reservados.
+    </p>
+
+  </footer>
+
+
+</body>
+
+</html>
+```
